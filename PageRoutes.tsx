@@ -2,6 +2,7 @@
 import { createBrowserRouter} from 'react-router-dom';
 import LoginWrapper from "./src/Login/LoginWrapper"
 import AddCategoryWrapper from './src/Category/Add/AddCategoryWrapper';
+import CategoryListingWrapper from './src/Category/List/CategoryListingWrapper';
 
 const router = createBrowserRouter([
     {
@@ -16,8 +17,10 @@ const router = createBrowserRouter([
         path: "/addcategory",
         element: <AddCategoryWrapper/>
     },
-   
-
+     {
+        path : "getAllcategory",
+        element: <CategoryListingWrapper/>
+     }
 
 
 ]);

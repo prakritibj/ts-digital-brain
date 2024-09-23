@@ -14,8 +14,8 @@ const validationSchema = object({
   categoryName: string().required("Category is a required field")
 })
 
-const handleSubmit = (vlaues: any) => {
-  AddCategory(vlaues).then ((res)=>{
+const handleSubmit = (values: any) => {
+  AddCategory(values).then ((res)=>{
     console.log(res)
   })
 }

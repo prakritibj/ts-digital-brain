@@ -8,7 +8,6 @@ const AuthApi =userApiSlice.injectEndpoints({
           method: "POST",
           body: userData
         }),
-        // providesTags:["products"]
       }),
       editCategory: builder.mutation({
         query: (userData:any) => ({
@@ -18,21 +17,21 @@ const AuthApi =userApiSlice.injectEndpoints({
         })
       }),
       deleteCategory: builder.mutation({
-        query: (userData:any) => ({
-          url: 'category/delete/id',
+        query: ({userData ,id}) => ({
+          url: `category/delete/${id}`,
           method: "DELETE",
           body: userData
         })
       }),
-      getCategory: builder.mutation({
-        query: (userData:any) => ({
+      getCategory: builder.query({
+        query: () => ({
           url: 'category/getAllcategory',
           method: "GET",
-          body: userData
+        
         })
       }),
     })
 })
-export const {useAddCategoryMutation,useEditCategoryMutation}= AuthApi
+export const {useAddCategoryMutation,useEditCategoryMutation, useDeleteCategoryMutation,useGetCategoryQuery}= AuthApi
 export default  AuthApi
 

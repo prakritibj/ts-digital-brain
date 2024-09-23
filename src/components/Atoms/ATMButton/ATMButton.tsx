@@ -18,7 +18,7 @@ const ATMButton: React.FC<ButtonProps> = ({
        
     }) => {
   return (
-    <button className = { `${className }bg-sky-500 text-white rounded-sm`}
+    <button className = { `${className }  bg-sky-500 text-white border-gray-50 rounded `}
       type={type}
       onClick={onClick}
       disabled = {disabled}

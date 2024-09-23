@@ -4,20 +4,22 @@
 // const EditCategoryWrapper: React.FC = () => {
  
 
+  
+// const initialValues = {
+//   categoryName: ""
+// }
 //   const handleSubmit = (values: { name: string; mobile: string; address: string }) => {
 //     console.log('Category Edited:', values);
 //     // Add logic for editing a Category
 //   };
 
 //   return (
-//     <div className="max-w-lg mx-auto mt-8">
-//       <h2 className="text-2xl font-bold mb-4">Edit Category</h2>
 //       <CategoryFormLayout
-//         initialValues={{categoryName : ""}}
+//       initialValues={initialValues}
 //         onSubmit={handleSubmit}
 //         buttonLabel="Edit Category"
 //       />
-//     </div>
+
 //   );
 // };
 

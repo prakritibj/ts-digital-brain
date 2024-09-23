@@ -16,7 +16,7 @@ const ATMTextField : React.FC<ATMTextFieldProps>  = ({label, value, onChange, pl
   return (
      <div className='flex flex-col text-left m-3 '>
     <label className='text-slate-700 font-semibold'>{label}</label>
-    <input className= {`${className} p-2 ml-2 border-gray-200 rounded outline outline-slate-300`}
+    <input className= {`${className}w-full p-1 border-gray-50 rounded-sm border-2 outline outline-1 outline-slate-400`}
     name = {name}
      value={value}
      onChange={onChange}
@@ -28,3 +28,4 @@ const ATMTextField : React.FC<ATMTextFieldProps>  = ({label, value, onChange, pl
 }
 
 export default ATMTextField
+

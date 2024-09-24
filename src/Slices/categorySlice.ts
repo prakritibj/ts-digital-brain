@@ -10,8 +10,8 @@ const AuthApi =userApiSlice.injectEndpoints({
         }),
       }),
       editCategory: builder.mutation({
-        query: (userData:any) => ({
-          url: 'category/update/:id',
+        query: ({userData,id}) => ({
+          url: `category/update/${id}`,
           method: "PATCH",
           body: userData
         })

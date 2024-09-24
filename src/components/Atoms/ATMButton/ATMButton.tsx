@@ -18,7 +18,8 @@ const ATMButton: React.FC<ButtonProps> = ({
        
     }) => {
   return (
-    <button className = { `${className }  bg-sky-500 text-white border-gray-50 rounded `}
+ <div className='flex flex-col text-left m-3'>
+     <button className = { `${className }  bg-sky-500 text-white rounded w-full p-2 m-2  border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-sky-500 `}
       type={type}
       onClick={onClick}
       disabled = {disabled}
@@ -26,6 +27,7 @@ const ATMButton: React.FC<ButtonProps> = ({
     >
       {label}
     </button>
+ </div>
   );
 };
 

@@ -9,8 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // yup validation
 const validationSchema = Yup.object({
-  userName: Yup.string().required('Username is required'),
-  password: Yup.string().required('Password is required')
+  userName: Yup.string().required('Username is required').min(4).max(20),
+  password: Yup.string().required('Password is required').min(8)
 });
 
 interface LoginValues {

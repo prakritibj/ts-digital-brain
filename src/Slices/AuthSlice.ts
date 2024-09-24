@@ -7,7 +7,7 @@ const AuthApi =userApiSlice.injectEndpoints({
         query: (userData:any) => ({
           url: "/user/register",
           method: "POST",
-          body: userData
+          body: userData,
         }),
         // providesTags:["products"]
       }),

@@ -68,7 +68,7 @@ const ATMPasswordField: React.FC<ATMPasswordFieldProps> = ({
       <label className="text-slate-700 font-medium">{label}</label>
       <input
         type="password"
-        className={`${className} w-full p-2 border-2 border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-sky-500`}
+        className={`${className} w-full p-2 m-2 border-gray-50 rounded-sm border-2 outline outline-1 outline-slate-400`}
         name={name}
         value={value}     
         onChange={onChange}

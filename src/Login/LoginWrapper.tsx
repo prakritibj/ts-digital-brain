@@ -44,7 +44,7 @@ const LoginWrapper: React.FC = () => {
       .catch((error) => {
         console.log(error)
       })
-    // console.log(values);
+    console.log(values);
    setTimeout(()=>{
     setSubmitting(false);
    },2000)

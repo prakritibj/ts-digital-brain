@@ -1,64 +1,3 @@
-// import React from 'react';
-// import { useDeleteCategoryMutation, useGetCategoryQuery , useEditCategoryMutation} from '../../Slices/categorySlice';
-// import CategoryListing from './CategoryListing';
-
-// const CategoryListingWrapper: React.FC = () => {
-//     const token = localStorage.getItem("auth")
-//   const { data, isLoading, error } = useGetCategoryQuery({token});
-//   const [deleteCategory] = useDeleteCategoryMutation();
-//   const [editCategory] = useEditCategoryMutation()
-//   // console.log(editCategory, "edit")
-
-
-//   console.log(data, "userData");
-
-//   if (isLoading) {
-//     return <p>Loading.....</p>;
-//   }
-
-//   if (error) {
-//     return <p>Error loading categories:</p>
-//   }
-
-//   const handleDeleteCategory = async (id: string) => {
-//     try {
-//       const res = await deleteCategory({id,token})
-//       console.log('Category deleted:', res);
-//     } catch (err) {
-//       console.error("Error deleting category:", err);
-//     }
-//   };
-
-
-
-//   const handleEditCategory = async (id: string, newName: string) => {
-//     try {
-//       const res = await editCategory({ id, newName, token}); // Update with new name
-   
-//       console.log('Category edited:', res);
-//     } catch (err) {
-//       console.error("Error editing category:", err);
-//     }
-//   };
-//   return (
-//     <>
-//       {data ? (
-//         <CategoryListing 
-//          data ={data}
-//        deleteCategory={handleDeleteCategory}
-//        editCategory={handleEditCategory} />
-//       ) : (
-//         <p>No categories available</p>
-//       )}
-//     </>
-//   );
-// };
-
-// export default CategoryListingWrapper;
-
-
-
-// ==========================================================================
 
 import React from 'react';
 import Swal from 'sweetalert2'
@@ -70,6 +9,7 @@ const CategoryListingWrapper: React.FC = () => {
   const { data, isLoading, error } = useGetCategoryQuery({ token });
   const [deleteCategory] = useDeleteCategoryMutation();
   const [editCategory] = useEditCategoryMutation();
+  console.log(data, "data")
 
   if (isLoading) {
     return <p>Loading.....</p>;

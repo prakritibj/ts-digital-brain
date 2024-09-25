@@ -42,6 +42,8 @@
 
 
   import React, { useState } from 'react';
+  import { Link } from 'react-router-dom';
+
 
 interface Category {
   id: number;
@@ -101,9 +103,10 @@ const CategoryListing: React.FC<Props> = ({ data, deleteCategory, editCategory }
               >
                 Delete
               </button>
-              <button onClick={() => handleEditClick(category)} className="border-2 p-2 rounded text white bg-sky-100">
+              <Link to={`/edit-category/${category._id}?categoryName=${category.categoryName}`}><button
+               className="border-2 p-2 rounded text white bg-sky-100">
                 Edit
-              </button>
+              </button></Link>
             </div>
           )}
         </div>

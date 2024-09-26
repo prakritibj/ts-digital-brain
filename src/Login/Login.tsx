@@ -17,48 +17,53 @@ const Login: React.FC<LoginProps> = ({ formikProps }) => {
 
     return (
         <div className="flex items-center justify-center h-screen bg-gray-200">
-            <div className="bg-white p-10 rounded-lg shadow-md">
+            <div className="bg-white p-10 gap-4 rounded-lg shadow-md flex flex-col">
                 <h2 className="text-2xl font-semibold text-center mt-4 mb-10 text-gray-600">Login</h2>
-                
+
                 {/* Username */}
-                <ATMTextField
-                    label="Username"
-                    value={values.userName}
-                    onChange={handleChange}
-                    placeholder="Enter username"
-                    name="userName"
-                    className=""
-                />
-                {errors.userName && touched.userName && (
-                    <div className="text-red-500 text-sm mt-1 ml-5">{errors.userName}</div>
-                )}
-                
+                <div>
+                    <ATMTextField
+                        label="Username"
+                        value={values.userName}
+                        onChange={handleChange}
+                        placeholder="Enter username"
+                        name="userName"
+                        className=""
+                    />
+                    {errors.userName && touched.userName && (
+                        <div className="text-red-500  absolute  text-sm  ">{errors.userName}</div>
+                    )}
+                </div>
+
                 {/* Password */}
-                <ATMPasswordfield
-                    label="Password"
-                    value={values.password}
-                    onChange={handleChange}
-                    placeholder="Enter password"
-                    name="password"
-                    className=""
-                />
-                {errors.password && touched.password && (
-                    <div className="text-red-500 text-sm ml-5">{errors.password}</div>
-                )}
+                <div>
+                    <ATMPasswordfield
+                        label="Password"
+                        value={values.password}
+                        onChange={handleChange}
+                        placeholder="Enter password"
+                        name="password"
+                        className=""
+                    />
+                    {errors.password && touched.password && (
+                        <div className="text-red-500  absolute text-sm ">{errors.password}</div>
+                    )}
+                </div>
 
                 {/* Button */}
-                <ATMButton
-                    label="Login"
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`w-full bg-blue-500 text-white font-semibold rounded-sm ${
+                <div>
+                    <ATMButton
+                        label="Login"
+                        type="submit"
+                        disabled={isSubmitting}
+                        className={`w-full bg-blue-500 text-white font-semibold rounded-sm ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                            }`}
+                    />
+                </div>
+                <div className='text-center text-sky-700'>
+                    <p className='text-sm '> create a new account</p>
+                </div>            </div>
 
-                        isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-                    }`}
-                />
-                <p className='ml-14 text-sm'> create a new account</p>
-            </div>                                                                                                                                               
-            
         </div>
     );
 }

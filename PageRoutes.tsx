@@ -4,6 +4,9 @@ import LoginWrapper from "./src/Login/LoginWrapper"
 import AddCategoryWrapper from './src/Category/Add/AddCategoryWrapper';
 import CategoryListingWrapper from './src/Category/List/CategoryListingWrapper';
 import EditCategoryWrapper from './src/Category/Edit/EditCategoryWrapper';
+import Home from './src/Layout/Home';
+// import Home from './src/Layout';
+
 
 const router = createBrowserRouter([
     {
@@ -29,7 +32,7 @@ const router = createBrowserRouter([
 
      {
         path : "/home",
-        element: <EditCategoryWrapper/>
+        element: <Home/>
      }
 
 

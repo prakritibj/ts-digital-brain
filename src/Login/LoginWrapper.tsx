@@ -2,10 +2,10 @@ import React from 'react';
 import Login from './Login';
 import { Form, Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
-import { useLoginMutation } from '../Slices/AuthSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useLoginMutation } from '../Slices/AuthSlice';
 
 // yup validation
 const validationSchema = Yup.object({
@@ -24,9 +24,8 @@ const initialValues: LoginValues = {
 
 const LoginWrapper: React.FC = () => {
   const navigate = useNavigate()
-
-  const [login] = useLoginMutation()
-
+ const [login] = useLoginMutation()
+  // console.log(login, 'kkkkk')
   const handleSubmit = (values: LoginValues, { setSubmitting }: FormikHelpers<LoginValues>) => {
    
     login(values).then((res: any) => {
@@ -34,7 +33,7 @@ const LoginWrapper: React.FC = () => {
       console.log(res, "res")
       if (res?.data.status) {
         toast.success(res.data.msg)
-        localStorage.setItem("auth",res.data.token)
+        localStorage.setItem("x-access-token",res.data.data.token)
         navigate("/addcategory")
       } else {
         toast.error(res.data.msg)

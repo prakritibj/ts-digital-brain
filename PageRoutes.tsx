@@ -5,7 +5,8 @@ import AddCategoryWrapper from './src/Category/Add/AddCategoryWrapper';
 import CategoryListingWrapper from './src/Category/List/CategoryListingWrapper';
 import EditCategoryWrapper from './src/Category/Edit/EditCategoryWrapper';
 import Home from './src/Layout/Home';
-// import Home from './src/Layout';
+import SubcategoryWrapper from './src/Subcategory/Add/AddSubcategoryWrapper';
+
 
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
      {
         path : "/home",
         element: <Home/>
+     },
+     {
+        path : "/addsubcategory",
+         element : <SubcategoryWrapper/>
      }
 
 

@@ -1,25 +1,25 @@
 
-import { useEditCategoryMutation } from '../../Slices/categorySlice';
 import { useParams, useSearchParams } from 'react-router-dom';
-import Category from '../Layouts/CategoryFormLayout';
+import Subcategory from '../Layout/SubcategoryFormLayout';
 import { Formik,Form } from 'formik';
 import { object, string } from 'yup';
+import { useEditSubcategoryMutation } from '../../Slices/subcategorySlice';
 
-const EditCategoryWrapper = () => {
+const EditSubCategoryWrapper = () => {
 
   const {id} = useParams()
   const  [queryParams] = useSearchParams()
-  const [editCategory] =useEditCategoryMutation()
+  const [ editSubcategory] = useEditSubcategoryMutation()
 
 const initialValues = {
-  categoryName: queryParams.get("categoryName")
+ subcategoryName: queryParams.get("categoryName")
 }
 const validationSchema = object({
-  categoryName: string().required("Category is a required field")
+ subcategoryName: string().required("Category is a required field")
 })
 
 const handleSubmit = (values: any) => {
-  editCategory({userData: values,id}).then ((res)=>{
+    editSubcategory({userData: values,id}).then ((res)=>{
     console.log(res)
   })
 }
@@ -33,7 +33,7 @@ const handleSubmit = (values: any) => {
   {
     (formikProp) => {
       return (
-      <Form> <Category formikProp = {formikProp} /> </Form>
+      <Form> < Subcategory formikProp = {formikProp} /> </Form>
       )
     }
   }
@@ -41,7 +41,7 @@ const handleSubmit = (values: any) => {
   )
 }
 
-export default EditCategoryWrapper
+export default EditSubCategoryWrapper 
 
 
 

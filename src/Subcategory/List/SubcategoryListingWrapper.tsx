@@ -2,10 +2,11 @@
 import React from 'react';
 import Swal from 'sweetalert2'
 import { useDeleteSubcategoryMutation,useGetSubcategoryQuery,useEditSubcategoryMutation } from '../../Slices/subcategorySlice';
+import CategoryListing from './SubcategoryListing';
 const SubcategoryListingWrapper: React.FC = () => {
 //   const token = localStorage.getItem("auth");
   const { data, isLoading, error } = useGetSubcategoryQuery();
-  const [deleteCategory] = useDeleteSubcategoryMutation;
+  const [deleteCategory] = useDeleteSubcategoryMutation()
   const [editCategory] = useEditSubcategoryMutation();
   console.log(data, "data")
 
@@ -52,7 +53,7 @@ const SubcategoryListingWrapper: React.FC = () => {
   return (
     <>
       {data ? (
-        <CategoryListing 
+        <CategoryListing
           data={data} 
           deleteCategory={handleDeleteCategory} 
           editCategory={handleEditCategory} 

@@ -1,37 +1,37 @@
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 
 interface Category {
-id: number;
-_id: string; 
-categoryName: string;
+id: number
+_id: string 
+categoryName: string
 }
 
 interface Props {
 data: {
-  data: Category[];
-  deletedCategory: string;
-};
-deleteCategory: (id: string) => Promise<void>; 
-editCategory: (id: string, newName: string) => Promise<void>;
+  data: Category[]
+  deletedCategory: string
+}
+deleteCategory: (id: string) => Promise<void> 
+editCategory: (id: string, newName: string) => Promise<void>
 }
 
 const CategoryListing: React.FC<Props> = ({ data, deleteCategory, editCategory }) => {
-const [editingCategoryId, setEditingCategoryId] = useState<string | null>(null);
-const [newCategoryName, setNewCategoryName] = useState<string>('');
+const [editingCategoryId, setEditingCategoryId] = useState<string | null>(null)
+const [newCategoryName, setNewCategoryName] = useState<string>('')
 
 const handleEditClick = (category: Category) => {
-  setEditingCategoryId(category._id);
-  setNewCategoryName(category.categoryName);
-};
+  setEditingCategoryId(category._id)
+  setNewCategoryName(category.categoryName)
+}
 
 const handleSave = async (id: string) => {
-  await editCategory(id, newCategoryName);
-  setEditingCategoryId(null);
-  setNewCategoryName('');
-};
+  await editCategory(id, newCategoryName)
+  setEditingCategoryId(null)
+  setNewCategoryName('')
+}
 
 return (
   <div className="grid md:grid-cols-3 grid-flow-row p-4 gap-4">
@@ -70,8 +70,8 @@ return (
       </div>
     ))}
   </div>
-);
-};
+)
+}
 
-export default CategoryListing;
+export default CategoryListing
 

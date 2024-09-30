@@ -33,8 +33,8 @@ const LoginWrapper: React.FC = () => {
       console.log(res, "res")
       if (res?.data.status) {
         toast.success(res.data.msg)
-        localStorage.setItem("x-access-token",res.data.data.token)
-        navigate("/addcategory")
+        localStorage.setItem("authToken",res.data.data.token)
+        navigate("/home")
       } else {
         toast.error(res.data.msg)
 

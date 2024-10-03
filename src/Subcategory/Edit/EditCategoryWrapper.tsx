@@ -1,47 +1,52 @@
+import { object, string } from 'yup'
+import { Form, Formik, FormikHelpers } from 'formik'
+import { useParams } from 'react-router-dom'
+// import AddSubcategoryForm from "../Layout/SubcategoryFormLayout"
+import AddSubcategoryForm from '../Layout/SubcategoryFormLayout'
 
-import { useParams, useSearchParams } from 'react-router-dom';
-import Subcategory from '../Layout/SubcategoryFormLayout';
-import { Formik,Form } from 'formik';
-import { object, string } from 'yup';
-import { useEditSubcategoryMutation } from '../../Slices/subcategorySlice';
+import { useEditSubcategoryMutation, useGetSingleSubcategoryQuery } from '../../Slices/subcategorySlice'
 
-const EditSubCategoryWrapper = () => {
+const EditSubcategoryWrapper = () => {
+  const { id } = useParams()
+  const [editSubcategory] = useEditSubcategoryMutation()
+  const { data } = useGetSingleSubcategoryQuery(id)
 
-  const {id} = useParams()
-  const  [queryParams] = useSearchParams()
-  const [ editSubcategory] = useEditSubcategoryMutation()
+  const initialValues = {
+    subcategoryName: data?.data.subcategoryName||""  // Initialize with fetched data or empty string
+  }
 
-const initialValues = {
- subcategoryName: queryParams.get("categoryName")
-}
-const validationSchema = object({
- subcategoryName: string().required("Category is a required field")
-})
-
-const handleSubmit = (values: any) => {
-    editSubcategory({userData: values,id}).then ((res)=>{
-    console.log(res)
+  const validationSchema = object({
+    subcategoryName: string().required("Enter subcategory name")
   })
-}
+
+  const handleSubmit = (values: any, { setSubmitting }: FormikHelpers<any>) => {
+    editSubcategory({ data: values, id }).then((res) => {
+      console.log(res , )
+      setSubmitting(false)
+    })
+  }
 
   return (
-  <Formik
-    initialValues={initialValues}
-    validationSchema={validationSchema}
-    onSubmit={handleSubmit}
-  > 
-  {
-    (formikProp) => {
-      return (
-      <Form> < Subcategory formikProp = {formikProp} /> </Form>
-      )
-    }
-  }
-  </Formik>   
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}
+      enableReinitialize={true}  // Allow form reinitialization when data changes
+    >
+      {
+        (formikProp) => (
+          <Form>
+            <AddSubcategoryForm buttonName={"Edit category"} formikProp={formikProp} heading={"Edit category"} />
+          </Form>
+        )
+      }
+    </Formik>
   )
 }
 
-export default EditSubCategoryWrapper 
+export default EditSubcategoryWrapper
+
+
 
 
 

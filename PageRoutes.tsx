@@ -5,7 +5,9 @@ import AddCategoryWrapper from './src/Category/Add/AddCategoryWrapper';
 import CategoryListingWrapper from './src/Category/List/CategoryListingWrapper';
 import EditCategoryWrapper from './src/Category/Edit/EditCategoryWrapper';
 import Home from './src/Layout/Home';
-import SubcategoryWrapper from './src/Subcategory/Add/AddSubcategoryWrapper';
+import AddSubcategoryWrapper from './src/Subcategory/Add/AddSubcategoryWrapper';
+// import EditSubcategoryWrapper from './src/Subcategory/Edit/EditCategoryWrapper';
+// import SubcategoryListWrapper from './src/Subcategory/List/SubcategoryListingWrapper';
 
 
 
@@ -37,8 +39,19 @@ const router = createBrowserRouter([
      },
      {
         path : "/addsubcategory",
-         element : <SubcategoryWrapper/>
+         element : <AddSubcategoryWrapper/>
      }
+    //  {
+    //     path : "/edit-subcategory/:id",
+    //      element : <EditSubcategoryWrapper/>
+    //  },
+    //  {
+    //     path : "/subcategorylisting",
+    //      element : <SubcategoryListWrapper/>
+    //  }
+
+
+
 
 
 

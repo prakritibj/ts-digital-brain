@@ -1,69 +1,43 @@
+import { useNavigate } from "react-router-dom";
+import { useDeleteSubcategoryMutation, useGetSubcategoryQuery } from "../../Slices/subcategorySlice";
+import SubcategoryList from "./SubcategoryListing";
 
-import React from 'react';
-import Swal from 'sweetalert2'
-import { useDeleteSubcategoryMutation,useGetSubcategoryQuery,useEditSubcategoryMutation } from '../../Slices/subcategorySlice';
-import CategoryListing from './SubcategoryListing';
-const SubcategoryListingWrapper: React.FC = () => {
-//   const token = localStorage.getItem("auth");
-  const { data, isLoading, error } = useGetSubcategoryQuery();
-  const [deleteCategory] = useDeleteSubcategoryMutation()
-  const [editCategory] = useEditSubcategoryMutation();
-  console.log(data, "data")
+interface Props {
+  categoryId: string; // Define the prop type for categoryId
+}
+
+const SubcategoryListWrapper = ({ categoryId }: Props) => {
+  const { data, isLoading, error } = useGetSubcategoryQuery(categoryId);
+  const [deleteSubcategory] = useDeleteSubcategoryMutation()
+  const navigate = useNavigate()
 
   if (isLoading) {
     return <p>Loading.....</p>;
   }
 
   if (error) {
-    return <p>Error loading categories:</p>;
+    return <p>Error loading subcategories: {error.message}</p>; // Show error message
   }
 
-  const handleDeleteCategory = async (id: string) => {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "Do you really want to delete this category?",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        try {
-          const res = await deleteCategory({ id, token });
-          console.log('Category deleted:', res);
-          Swal.fire('Deleted!', 'The category has been deleted.', 'success');
-        } catch (err) {
-          console.error("Error deleting category:", err);
-          Swal.fire('Error!', 'There was a problem deleting the category.', 'error');
-        }
-      }
-    });
-  };
-
-  const handleEditCategory = async (id: string, newName: string) => {
-    try {
-      const res = await editCategory({ id, newName });
-      console.log('Category edited:', res);
-    } catch (err) {
-      console.error("Error editing category:", err);
-    }
-  };
+const handleDeleteSubcateory = (_id: string) => {
+  deleteSubcategory(_id).then((res)=>{
+    console.log(res)
+  }).catch(err =>{
+    console.error("Error deleting category:", err)
+    })
+}
+const handleEdit = (_id : string) => {
+ navigate(`/edit-subcategory/${_id}`)
+}
 
   return (
     <>
-      {data ? (
-        <CategoryListing
-          data={data} 
-          deleteCategory={handleDeleteCategory} 
-          editCategory={handleEditCategory} 
-        />
-      ) : (
-        <p>No categories available</p>
-      )}
+      {data ? <SubcategoryList data={data} categoryId={categoryId} handleEdit ={handleEdit} deletesubcategory ={handleDeleteSubcateory} /> : <p>No subcategories available</p>}
     </>
   );
 };
 
-export default SubcategoryListingWrapper;
+export default SubcategoryListWrapper;
+
+
 

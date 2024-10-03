@@ -1,57 +1,61 @@
+import { object, string } from 'yup';
+import { Form, Formik } from 'formik';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate} from 'react-router-dom'; 
+import AddSubcategoryForm from '../Layout/SubcategoryFormLayout';
+import { useAddSubcategoryMutation } from '../../Slices/subcategorySlice';
 
-import { object, string } from 'yup'
-import { useAddCategoryMutation } from '../../Slices/categorySlice'
-import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
-import 'react-toastify/dist/ReactToastify.css'
-import { Form, Formik, FormikHelpers } from 'formik'
-import Subcategory from '../Layout/SubcategoryFormLayout'
-
-interface FormValues {
-  subcategoryName: string
-}
-
-const SubcategoryWrapper: React.FC = () => {
-  const [AddCategory] = useAddCategoryMutation()
-  const navigate = useNavigate()
-
-  const initialValues: FormValues = {
+const AddSubcategoryWrapper = ({categoryId}) => {
+  
+  // console.log(categoryId, "id")
+  const initialValues = {
     subcategoryName: '',
-  }
+    categoryId,
+    
+  };
+  const navigate = useNavigate();
   
   const validationSchema = object({
-    subcategoryName: string().required('subcategory is a required field'),
-  })
-
-  const handleSubmit = (
-    values: FormValues,
-    { setSubmitting }: FormikHelpers<FormValues>
-  ) => {
-    AddCategory(values).then((res) => {
-      if (res?.data?.status) {
-        toast.success(res.data.msg)
-        navigate('/getAllSubcategory')
+    subcategoryName: string().required('Enter subcategory name'),
+  });
+  const [AddSubcategory] = useAddSubcategoryMutation()
+  const handleSubmit = (values: any) => {
+    // console.log(values, "val")
+    AddSubcategory(values).then((res) => {
+      console.log(values, "bal")
+      console.log(res,"res")
+      if(res?.data) {
+        navigate('/home');
       } else {
-        toast.error(res.data.msg)
+        toast.error(res?.data?.msg);
       }
-      setSubmitting(false)
-    })
-  }
+      // setSubmitting(false)
+    });
+  };
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
+      // enableReinitialize={true}
     >
       {(formikProp) => (
         <Form>
-        <Subcategory formikProp={formikProp} />
+          <AddSubcategoryForm formikProp={formikProp} />
         </Form>
       )}
     </Formik>
-  )
-}
+  );
+};
 
-export default SubcategoryWrapper
+export default AddSubcategoryWrapper;
+
+
+
+
+
+
+
 

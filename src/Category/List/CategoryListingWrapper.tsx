@@ -66,21 +66,21 @@
 // }
 
 // export default CategoryListingWrapper
-// =======================================================================================================
-
-
-
+// ===============================================================================================================================///////////////////////////
 import { useNavigate } from 'react-router-dom';
-import { useDeleteCategoryMutation,useGetCategoryQuery } from '../../Slices/categorySlice';
+import { useDeleteCategoryMutation,useGetCategoryQuery } from '../../Slices/categorySlice'; 
+
 import CategoryListing from './CategoryListing'
 
 const CategoryLisitingWrapper = () => {
-const navigate = useNavigate()
+const navigate=useNavigate()
  const {data, isLoading, error} = useGetCategoryQuery();
- console.log(data,"dtrwqedqw")
 
  const [deleteCategory] = useDeleteCategoryMutation()
 
+
+ 
+ 
 if(isLoading){
   
   return <p>Loading.....</p>
@@ -90,14 +90,14 @@ if(error){
   return <p>Error loading categories</p>
 }
 
-const handleDeleteCategory = (_id : string) => {
+const handleDeleteCategory = (_id) => {
   deleteCategory(_id).then((res)=>{
     console.log(res)
   }).catch(err =>{
     console.error("Error deleting category:", err)
     })
 }
-const handleEdit=(_id: string)=>{
+const handleEdit=(_id)=>{
 navigate(`/edit-category/${_id}`)
 }
 
@@ -111,3 +111,6 @@ navigate(`/edit-category/${_id}`)
 }
 
 export default CategoryLisitingWrapper
+
+
+

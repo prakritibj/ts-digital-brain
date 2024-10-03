@@ -1,41 +1,40 @@
+import { ErrorMessage } from "formik";
+import ATMTextField from "../../components/Atoms/ATMTextField/ATMTextField";
 
-import { ErrorMessage, FormikProps } from "formik"
-import ATMTextField from "../../components/Atoms/ATMTextField/ATMTextField"
+import { IoIosAddCircle } from "react-icons/io";
 
-type Props = { formikProp: FormikProps<any> }
-const Subcategory = ({ formikProp }: Props) => {
-  const { values, handleChange } = formikProp
-
+const AddSubcategoryForm = ({ formikProp }: Props) => {
+  const { values, handleChange, isSubmitting } = formikProp;
 
   return (
-    <div className="h-screen flex justify-center flex-col items-center gap-3 m-auto">
-
-      {/* subcategory input field */}
-      <div className="border-2 bg-gray-100 rounded-lg shadow-lg w-[20%] h-auto p-6">
-        <h2 className="text-lg font-semibold mb-4 text-slate-500 text-center">Add subcategory</h2>
-
-        <ATMTextField
-          className="border border-gray-300 rounded-lg w-full p-2 mb-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          name="subcategoryName"
-          placeholder="Enter subcategory"
-          label="subcategory Name"
-          value={values.subcategoryName}
-          onChange={handleChange}
-        />
-        <p className="text-red-500 text-sm mb-2"><ErrorMessage name="subcategoryName" /></p>
-
+    <>
+      <div className="flex justify-start gap-3 mt-4 ml-4 m-auto">
+        {/* Submit button */}
         <button
           type="submit"
-          className="bg-blue-500 text-white rounded-lg mt-2 px-4 py-2  hover:bg-blue-600 transition duration-200"
+          disabled={isSubmitting} // disable when submitting
+          className={`flex items-center gap-1 text-gray-700 hover:text-gray-900 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
-          Add
+          <IoIosAddCircle className="text-red-400" />
         </button>
+
+        {/* Subcategory input field */}
+        <ATMTextField
+        label=""
+          className="border-pink-300 p-0 w-full placeholder:text-sm"
+          name="subcategoryName"
+          placeholder="Enter subcategory name"
+          value={values.subcategoryName} 
+          onChange={handleChange}
+        />
       </div>
 
-    </div>
+      <p>
+        <ErrorMessage name="subcategoryName" />
+      </p>
+    </>
+  );
+};
 
+export default AddSubcategoryForm;
 
-  )
-}
-
-export default Subcategory

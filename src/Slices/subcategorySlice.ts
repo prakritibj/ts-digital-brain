@@ -1,10 +1,10 @@
 import userApiSlice from "./apiSlice";
 
-const SubcategoryApi = userApiSlice.injectEndpoints({
+const AuthApi = userApiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    addSubcategory: builder.mutation({
+    AddSubcategory: builder.mutation({
       query: (subcategoryData) => ({
-        url: "subcategory/create",
+        url: "subcategory/createsubcategory",
         method: "POST",
         body: subcategoryData
       }),
@@ -35,6 +35,13 @@ const SubcategoryApi = userApiSlice.injectEndpoints({
       }),
     //   invalidatesTags: ["subcategory"]
     }),
+    getSingleSubcategory: builder.query({
+      query: ({id}) => ({
+        url: `subcategory/getSingleSubCategory/${id}`,
+        method: "GET",
+      }),
+    //   invalidatesTags: ["subcategory"]
+    }),
   })
 });
 
@@ -42,7 +49,8 @@ export const {
 useAddSubcategoryMutation,
 useEditSubcategoryMutation,
 useDeleteSubcategoryMutation,
-useGetSubcategoryQuery
-} = SubcategoryApi;
+useGetSubcategoryQuery,
+useGetSingleSubcategoryQuery
+} = AuthApi;
 
-export default SubcategoryApi;
+export default AuthApi;

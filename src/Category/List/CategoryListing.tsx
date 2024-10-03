@@ -130,51 +130,46 @@ import { Link } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import AddSubcategoryWrapper from "../../Subcategory/Add/AddSubcategoryWrapper"
-import SubcategoryListingWrapper from "../../Subcategory/List/SubcategoryListingWrapper";
+// import SubcategoryListWrapper from "../../subcategory/list/SubcategoryListWrapper";
+import SubcategoryListWrapper from "../../Subcategory/List/SubcategoryListingWrapper";
 
 
 interface Category {
   id: number;
-  _id: string; 
   categoryName: string;
 }
-
 
 interface Props {
   data: {
     data: Category[];
-    deletedCategory: string;
   };
-  deleteCategory: (id: string) => Promise<void>; 
-  editCategory: (id: string, newName: string) => Promise<void>;
-
 }
 
 
-const CategoryListing = ({data, deleteCategory,editCategory}: Props) => {
+const CategoryListing = ({data, deleteCategory,handleEdit}: Props) => {
 
   return (
       <div className="grid lg:grid-cols-4 grid-cols-1 w-full gap-2 mt-8  ">
-      {data?.data?.map((category) => {
+      {data?.data.map((category) => {
         return (
           
           <div className="flex-1 bg-white p-4 rounded shadow-lg border border-pink-100 " key={category._id}>
 
             <h1 className="text-xl lg:text-2xl text-slate-600 font-serif my-4 flex justify-between items-center truncate">{category.categoryName}
-            {/* <div>
+            <div>
               
             
-             <button className="text-green-500"  onClick={()=>editCategory(category._id)}></button>
+             <button className="text-green-500"  onClick={()=>handleEdit(category._id)}><CiEdit /></button>
              
 
-            <button onClick={()=> deleteCategory(category._id) }  className="text-red-400 ml-2"></button>
-            </div> */}
+            <button onClick={()=> deleteCategory(category._id) }  className="text-red-400 ml-2"><MdDeleteForever /></button>
+            </div>
             </h1>
             <hr />
 
             {/* <AddSubcategoryWrapper categoryId = {category._id}  /> */}
             
-           <SubcategoryListingWrapper categoryId = {category._id} />
+           <SubcategoryListWrapper categoryId = {category._id} />
           </div>
          
         );
@@ -186,6 +181,3 @@ const CategoryListing = ({data, deleteCategory,editCategory}: Props) => {
 
 export default CategoryListing
 
-
-
-  

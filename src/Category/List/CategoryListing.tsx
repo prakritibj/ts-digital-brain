@@ -130,7 +130,6 @@ import { Link } from "react-router-dom";
 import { MdDeleteForever } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import AddSubcategoryWrapper from "../../Subcategory/Add/AddSubcategoryWrapper"
-// import SubcategoryListWrapper from "../../subcategory/list/SubcategoryListWrapper";
 import SubcategoryListWrapper from "../../Subcategory/List/SubcategoryListingWrapper";
 
 
@@ -148,6 +147,7 @@ interface Props {
 
 const CategoryListing = ({data, deleteCategory,handleEdit}: Props) => {
 
+  console.log(data, "dd")
   return (
       <div className="grid lg:grid-cols-4 grid-cols-1 w-full gap-2 mt-8  ">
       {data?.data.map((category) => {
@@ -163,11 +163,12 @@ const CategoryListing = ({data, deleteCategory,handleEdit}: Props) => {
              
 
             <button onClick={()=> deleteCategory(category._id) }  className="text-red-400 ml-2"><MdDeleteForever /></button>
+
             </div>
             </h1>
             <hr />
 
-            {/* <AddSubcategoryWrapper categoryId = {category._id}  /> */}
+            <AddSubcategoryWrapper categoryId = {category._id}  />
             
            <SubcategoryListWrapper categoryId = {category._id} />
           </div>

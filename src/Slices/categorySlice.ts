@@ -22,10 +22,10 @@ const AuthApi = userApiSlice.injectEndpoints({
       invalidatesTags: ["category"]
     }),
     deleteCategory: builder.mutation({
-      query: ({ userData, id  }: any) => ({
+      query: ( id  : any) => ({
         url: `category/delete/${id}`,
         method: "DELETE",
-        body: userData
+       
       }),
       invalidatesTags : ["category"]
     }),
@@ -35,7 +35,7 @@ const AuthApi = userApiSlice.injectEndpoints({
         method: "GET",
 
       }),
-      invalidatesTags : ["category"]
+      providesTags : ["category"]
     }),
   })
 })

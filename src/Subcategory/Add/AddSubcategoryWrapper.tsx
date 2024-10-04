@@ -8,7 +8,7 @@ import { useAddSubcategoryMutation } from '../../Slices/subcategorySlice';
 
 const AddSubcategoryWrapper = ({categoryId}) => {
   
-  // console.log(categoryId, "id")
+  console.log(categoryId, "idd")
   const initialValues = {
     subcategoryName: '',
     categoryId,

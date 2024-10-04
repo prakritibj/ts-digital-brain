@@ -15,7 +15,7 @@ const AddSubcategoryForm = ({ formikProp }: Props) => {
           disabled={isSubmitting} // disable when submitting
           className={`flex items-center gap-1 text-gray-700 hover:text-gray-900 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
         >
-          <IoIosAddCircle className="text-red-400" />
+          <IoIosAddCircle className="text-slate-600" />
         </button>
 
         {/* Subcategory input field */}

@@ -8,7 +8,7 @@ const AuthApi = userApiSlice.injectEndpoints({
         method: "POST",
         body: subcategoryData
       }),
-    //   invalidatesTags: ["subcategory"]
+      invalidatesTags: ["subcategory"]
     }),
     editSubcategory: builder.mutation({
       query: ({ subcategoryData, id }) => {
@@ -19,28 +19,28 @@ const AuthApi = userApiSlice.injectEndpoints({
           body: subcategoryData,
         };
       },
-    //   invalidatesTags: ["subcategory"]
+      invalidatesTags: ["subcategory"]
     }),
     deleteSubcategory: builder.mutation({
-      query: ({ id }) => ({
+      query: (id) => ({
         url: `subcategory/delete/${id}`,
         method: "DELETE",
       }),
-    //   invalidatesTags: ["subcategory"]
+      invalidatesTags: ["subcategory"]
     }),
     getSubcategory: builder.query({
       query: () => ({
-        url: 'subcategory/getAllsubcategory',
+        url: 'category/getAllCategories',
         method: "GET",
       }),
-    //   invalidatesTags: ["subcategory"]
+     providesTags: ["subcategory"]
     }),
     getSingleSubcategory: builder.query({
       query: ({id}) => ({
         url: `subcategory/getSingleSubCategory/${id}`,
         method: "GET",
       }),
-    //   invalidatesTags: ["subcategory"]
+     providesTags: ["subcategory"]
     }),
   })
 });

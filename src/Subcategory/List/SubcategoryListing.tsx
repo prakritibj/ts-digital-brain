@@ -34,7 +34,7 @@ const SubcategoryList = ({ data, categoryId, deletesubcategory, handleEdit }: Pr
           <div key={subcategory._id} className="flex justify-between items-center p-2 border-b">
             <span>{subcategory.subcategoryName}</span>
             <div>
-              <button className="text-blue-500 size-11" onClick={()=>{handleEdit(subcategory._id)}}>
+              <button className="text-blue-500 size" onClick={()=>{handleEdit(subcategory._id)}}>
                 <CiEdit />
               </button>
 

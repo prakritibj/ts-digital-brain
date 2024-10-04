@@ -78,9 +78,6 @@ const navigate=useNavigate()
 
  const [deleteCategory] = useDeleteCategoryMutation()
 
-
- 
- 
 if(isLoading){
   
   return <p>Loading.....</p>
@@ -92,6 +89,7 @@ if(error){
 
 const handleDeleteCategory = (_id) => {
   deleteCategory(_id).then((res)=>{
+    console.log(_id,"iddk")
     console.log(res)
   }).catch(err =>{
     console.error("Error deleting category:", err)

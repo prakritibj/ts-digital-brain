@@ -8,6 +8,7 @@ interface Props {
 
 const SubcategoryListWrapper = ({ categoryId }: Props) => {
   const { data, isLoading, error } = useGetSubcategoryQuery(categoryId);
+  console.log(data,"DATA")
   const [deleteSubcategory] = useDeleteSubcategoryMutation()
   const navigate = useNavigate()
 

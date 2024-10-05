@@ -6,6 +6,11 @@ import CategoryListingWrapper from './src/Category/List/CategoryListingWrapper';
 import EditCategoryWrapper from './src/Category/Edit/EditCategoryWrapper';
 import Home from './src/Layout/Home';
 import AddSubcategoryWrapper from './src/Subcategory/Add/AddSubcategoryWrapper';
+import SubcategoryListWrapper from './src/Subcategory/List/SubcategoryListingWrapper';
+import Register from './src/RegisterPage/RegisterPage';
+import RegistrationWrapper from './src/RegisterPage/RegisterPageWrapper';
+import EditSubcategoryWrapper from './src/Subcategory/Edit/EditCategoryWrapper';
+// import RegistrationWrapper from './src/RegisterPage/RegisterPageWrapper';
 // import EditSubcategoryWrapper from './src/Subcategory/Edit/EditCategoryWrapper';
 // import SubcategoryListWrapper from './src/Subcategory/List/SubcategoryListingWrapper';
 
@@ -40,15 +45,19 @@ const router = createBrowserRouter([
      {
         path : "/addsubcategory",
          element : <AddSubcategoryWrapper/>
+     },
+     {
+        path : "/edit-subcategory/:id",
+         element : <EditSubcategoryWrapper/>
+     },
+     {
+        path : "/subcategory-list",
+         element : <SubcategoryListWrapper/>
+     },
+     {
+        path : "/registration",
+         element :  <RegistrationWrapper/>
      }
-    //  {
-    //     path : "/edit-subcategory/:id",
-    //      element : <EditSubcategoryWrapper/>
-    //  },
-    //  {
-    //     path : "/subcategorylisting",
-    //      element : <SubcategoryListWrapper/>
-    //  }
 
 
 

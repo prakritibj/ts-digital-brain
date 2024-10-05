@@ -20,6 +20,7 @@ const EditSubcategoryWrapper = () => {
   })
 
   const handleSubmit = (values: any, { setSubmitting }: FormikHelpers<any>) => {
+    console.log(values, "val naimna")
     editSubcategory({ data: values, id }).then((res) => {
       console.log(res , )
       setSubmitting(false)

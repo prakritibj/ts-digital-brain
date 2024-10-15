@@ -8,7 +8,7 @@ import RegisterPage from './RegisterPage';
 import { Form, Formik } from 'formik';
 
 const RegistrationWrapper = () => {
-     const [register] = useRegisterMutation()
+     const [ register] = useRegisterMutation()
    console.log(register, "rehj")
   const navigate = useNavigate();
   const initialValues = {

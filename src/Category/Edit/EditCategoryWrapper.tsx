@@ -1,27 +1,41 @@
 
-import { useEditCategoryMutation } from '../../Slices/categorySlice';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useEditCategoryMutation, useGetSingleCategoryQuery } from '../../Slices/categorySlice';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import Category from '../Layouts/CategoryFormLayout';
-import { Formik,Form } from 'formik';
+import { Formik,Form, FormikHelpers } from 'formik';
 import { object, string } from 'yup';
+import { toast } from 'react-toastify';
 
 const EditCategoryWrapper = () => {
 
   const {id} = useParams()
-  const  [queryParams] = useSearchParams()
   const [editCategory] =useEditCategoryMutation()
+  const {data}= useGetSingleCategoryQuery(id)
+  // console.log(data, "kjncb")
+  const navigate = useNavigate();
 
 const initialValues = {
-  categoryName: queryParams.get("categoryName")
+  categoryName: data?.data?.categoryName
 }
 const validationSchema = object({
   categoryName: string().required("Category is a required field")
 })
 
-const handleSubmit = (values: any) => {
+const handleSubmit = (values: any, { setSubmitting }: FormikHelpers<any>) => {
   editCategory({userData: values,id}).then ((res)=>{
-    console.log(res)
+    if (res) {
+      toast.success('Category edited successfully!');
+      navigate('/home');
+    }
   })
+  .catch(() => {
+    toast.error('Failed to edit category. Please try again.');
+  })
+  .finally(() => {
+    setSubmitting(false);
+  });
+    // console.log(res)
+  // })
 }
 
   return (
@@ -29,11 +43,14 @@ const handleSubmit = (values: any) => {
     initialValues={initialValues}
     validationSchema={validationSchema}
     onSubmit={handleSubmit}
+    enableReinitialize={true}
   > 
   {
     (formikProp) => {
       return (
-      <Form> <Category formikProp = {formikProp} /> </Form>
+      <Form>
+         <Category buttonName={'Edit category'} formikProp={formikProp} heading={'Edit category'}/>
+          </Form>
       )
     }
   }
@@ -42,6 +59,4 @@ const handleSubmit = (values: any) => {
 }
 
 export default EditCategoryWrapper
-
-
 

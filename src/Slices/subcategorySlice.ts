@@ -8,15 +8,15 @@ const AuthApi = userApiSlice.injectEndpoints({
         method: "POST",
         body: subcategoryData
       }),
-      invalidatesTags: ["subcategory"]
+      invalidatesTags: ['subcategory']
     }),
     editSubcategory: builder.mutation({
-      query: ({ subcategoryData, id }) => {
-        console.log(subcategoryData);
+      query: ({ data, id }) => {
+        console.log(data);
         return {
           url: `subcategory/update/${id}`,
           method: "PATCH",
-          body: subcategoryData,
+          body: data,
         };
       },
       invalidatesTags: ["subcategory"]
@@ -36,7 +36,7 @@ const AuthApi = userApiSlice.injectEndpoints({
      providesTags: ["subcategory"]
     }),
     getSingleSubcategory: builder.query({
-      query: ({id}) => ({
+      query: (id) => ({
         url: `subcategory/getSingleSubCategory/${id}`,
         method: "GET",
       }),
@@ -44,7 +44,7 @@ const AuthApi = userApiSlice.injectEndpoints({
     }),
   })
 });
-
+ 
 export const { 
 useAddSubcategoryMutation,
 useEditSubcategoryMutation,

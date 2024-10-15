@@ -1,7 +1,6 @@
 
 import { ErrorMessage, FormikProps } from "formik";
-import { FaUserEdit } from "react-icons/fa";
-import { RiLockPasswordFill } from "react-icons/ri";
+
 import { Link } from "react-router-dom";
 import ATMTextField from "../components/Atoms/ATMTextField/ATMTextField";
 import ATMPasswordField from "../components/Atoms/ATMPasswordfield/ATMPasswordfield";

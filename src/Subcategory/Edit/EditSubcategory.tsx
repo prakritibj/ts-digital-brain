@@ -10,9 +10,10 @@ const EditSubcategoryWrapper = () => {
   const { id } = useParams()
   const [editSubcategory] = useEditSubcategoryMutation()
   const { data } = useGetSingleSubcategoryQuery(id)
+  console.log(data,id ,"iod")
 
   const initialValues = {
-    subcategoryName: data?.data.subcategoryName||""  // Initialize with fetched data or empty string
+    subcategoryName: data?.data?.subcategoryName||""  // Initialize with fetched data or empty string
   }
 
   const validationSchema = object({
@@ -22,7 +23,8 @@ const EditSubcategoryWrapper = () => {
   const handleSubmit = (values: any, { setSubmitting }: FormikHelpers<any>) => {
     console.log(values, "val naimna")
     editSubcategory({ data: values, id }).then((res) => {
-      console.log(res , )
+      
+      console.log(res, "resp0")
       setSubmitting(false)
     })
   }
@@ -37,7 +39,7 @@ const EditSubcategoryWrapper = () => {
       {
         (formikProp) => (
           <Form>
-            <AddSubcategoryForm buttonName={"Edit category"} formikProp={formikProp} heading={"Edit category"} />
+            <AddSubcategoryForm buttonName={"Edit subcategory"} formikProp={formikProp} heading={"Edit subcategory"} />
           </Form>
         )
       }

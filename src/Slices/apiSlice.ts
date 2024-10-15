@@ -13,7 +13,7 @@ const userApiSlice = createApi({
       return headers;
     },
   }),
-  tagTypes: ['category ,subcategory,resource'],
+  tagTypes: ['category', 'subcategory', 'resource'],
   endpoints: () => ({})
 })
 

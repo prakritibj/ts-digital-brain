@@ -71,7 +71,7 @@ const CategoryWrapper: React.FC = () => {
   const navigate = useNavigate();
 
   const initialValues: FormValues = {
-    categoryName: '',
+    categoryName: ' ',
   };
   
 
@@ -85,13 +85,15 @@ const CategoryWrapper: React.FC = () => {
   ) => {
     AddCategory(values).then((res) => {
       if (res?.data?.status) {
-        toast.success(res.data.msg);
-        navigate('/getAllcategory');
+        toast.success("Category added successfully!")
+        navigate("/home")
+        setSubmitting(false)
       } else {
         toast.error(res.data.msg);
       }
-      setSubmitting(false)
-    });
+    }).catch(() => {
+      toast.error("An error occurred. Please try again.")
+    })
   };
 
   return (
@@ -99,10 +101,12 @@ const CategoryWrapper: React.FC = () => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
+      enableReinitialize={true}
+
     >
       {(formikProp) => (
         <Form>
-          <Category formikProp={formikProp} />
+          <Category buttonName={"Add category"} heading={"Add category"} formikProp={formikProp} />
         </Form>
       )}
     </Formik>

@@ -1,5 +1,6 @@
 import { MdDeleteForever } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 interface Subcategory {
   _id: string;
@@ -32,7 +33,9 @@ const SubcategoryList = ({ data, categoryId, deletesubcategory, handleEdit }: Pr
       {category ? (
         category?.subCategories?.map((subcategory) => (
           <div key={subcategory._id} className="flex justify-between items-center p-2 border-b">
-            <span>{subcategory.subcategoryName}</span>
+            {/* <span>{subcategory.subcategoryName}</span> */}
+            <span> <Link to={`/resources/${subcategory._id}`}> {subcategory.subcategoryName} </Link>  </span>
+
             <div>
               <button className="text-blue-500 size" onClick={()=>{handleEdit(subcategory._id)}}>
                 <CiEdit />

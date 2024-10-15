@@ -21,6 +21,14 @@ const AuthApi = userApiSlice.injectEndpoints({
       },
       invalidatesTags: ["category"]
     }),
+
+     GetSingleCategory: builder.query({
+      query: (id: any) => ({
+          url: `/category/getSingleCategory/${id}`,
+          method: "GET",
+          
+      }),
+  }),
     deleteCategory: builder.mutation({
       query: ( id  : any) => ({
         url: `category/delete/${id}`,
@@ -39,6 +47,10 @@ const AuthApi = userApiSlice.injectEndpoints({
     }),
   })
 })
-export const { useAddCategoryMutation, useEditCategoryMutation, useDeleteCategoryMutation, useGetCategoryQuery } = AuthApi
+export const { useAddCategoryMutation,
+    useEditCategoryMutation,
+    useDeleteCategoryMutation,
+    useGetCategoryQuery,
+  useGetSingleCategoryQuery } = AuthApi
 export default AuthApi
 

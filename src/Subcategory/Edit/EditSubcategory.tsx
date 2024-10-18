@@ -1,14 +1,16 @@
 import { object, string } from 'yup'
 import { Form, Formik, FormikHelpers } from 'formik'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 // import AddSubcategoryForm from "../Layout/SubcategoryFormLayout"
 import AddSubcategoryForm from '../Layout/SubcategoryFormLayout'
 
 import { useEditSubcategoryMutation, useGetSingleSubcategoryQuery } from '../../Slices/subcategorySlice'
+import { toast } from 'react-toastify'
 
 const EditSubcategoryWrapper = () => {
   const { id } = useParams()
   const [editSubcategory] = useEditSubcategoryMutation()
+  const navigate = useNavigate()
   const { data } = useGetSingleSubcategoryQuery(id)
   console.log(data,id ,"iod")
 
@@ -23,10 +25,20 @@ const EditSubcategoryWrapper = () => {
   const handleSubmit = (values: any, { setSubmitting }: FormikHelpers<any>) => {
     console.log(values, "val naimna")
     editSubcategory({ data: values, id }).then((res) => {
-      
-      console.log(res, "resp0")
+      console.log(values, "bal")
+      // console.log(res, "res")
+      if (res?.data) {
+        toast.success("Subcategory edit successfully!");
+
+        navigate('/home');
+      } else {
+        toast.error(res?.data?.msg);
+      }
       setSubmitting(false)
-    })
+    }).catch(() => {
+      toast.error("An error occurred. Please try again.");
+      setSubmitting(false);
+    });
   }
 
   return (

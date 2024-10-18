@@ -19,17 +19,22 @@ const AddSubcategoryWrapper = ({ categoryId }: any) => {
   const validationSchema = object({
     subcategoryName: string().required('Enter subcategory name'),
   });
-  const handleSubmit = (values: any) => {
+  const handleSubmit = (values: any, { setSubmitting }: FormikHelpers<any>) => {
+   
     // console.log(values, "val")
     AddSubcategory(values).then((res) => {
       console.log(values, "bal")
-      console.log(res, "res")
+      // console.log(res, "res")
       if (res?.data) {
+        toast.success("Subcategory added successfully!");
         navigate('/home');
       } else {
         toast.error(res?.data?.msg);
       }
-      // setSubmitting(false)
+      setSubmitting(false)
+    }).catch(() => {
+      toast.error("An error occurred. Please try again.");
+      setSubmitting(false);
     });
   };
 
@@ -38,7 +43,7 @@ const AddSubcategoryWrapper = ({ categoryId }: any) => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
-    // enableReinitialize={true}
+      enableReinitialize={true}
     >
       {(formikProp) => (
         <Form>

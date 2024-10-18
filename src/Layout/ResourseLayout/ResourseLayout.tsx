@@ -1,6 +1,6 @@
 
 
-import AddResourcesWrapper from "../../Resourse/Add/AddResourseWrapper"
+// import AddResourcesWrapper from "../../Resourse/Add/AddResourseWrapper"
 import ResourcesListingWrapper from "../../Resourse/List/ResourseListingWrapper"
 
 type Props = {}
@@ -8,7 +8,7 @@ type Props = {}
 export const ResourcesLayout = () => {
   return (
     <>
-    <AddResourcesWrapper/>
+    {/* <AddResourcesWrapper/> */}
     <ResourcesListingWrapper/>
     </>
   )

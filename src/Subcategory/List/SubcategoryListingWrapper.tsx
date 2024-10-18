@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useDeleteSubcategoryMutation, useGetSubcategoryQuery } from "../../Slices/subcategorySlice";
 import SubcategoryList from "./SubcategoryListing";
+import DotSpinner from "../../components/Scaleton/circleLoder";
 
 interface Props {
   categoryId: string; // Define the prop type for categoryId
@@ -13,7 +14,7 @@ const SubcategoryListWrapper = ({ categoryId }: Props) => {
   const navigate = useNavigate()
 
   if (isLoading) {
-    return <p>Loading.....</p>;
+    return <DotSpinner/>
   }
 
   if (error) {

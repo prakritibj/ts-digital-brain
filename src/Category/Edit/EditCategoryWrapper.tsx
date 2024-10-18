@@ -1,6 +1,6 @@
 
 import { useEditCategoryMutation, useGetSingleCategoryQuery } from '../../Slices/categorySlice';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Category from '../Layouts/CategoryFormLayout';
 import { Formik,Form, FormikHelpers } from 'formik';
 import { object, string } from 'yup';

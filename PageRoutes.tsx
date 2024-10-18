@@ -82,9 +82,15 @@ const router = createBrowserRouter([
       path:"/edit-resource/:id",
       element: <EditResourcesWrapper/>
     },
+   //  {
+   //    path:"/edit",
+   //    element: <div>hello </div>
+   //  },
+   {
+      path : "/newResourse/:id",
+      element :  <AddResourcesWrapper/>
+   },
     
-   
-
 ]);
 
 

@@ -14,11 +14,21 @@ type Props = {
   }>
 };
 
-const ResourcesList = ({ data, DeleteResource, handleEdit }: Props) => {
+const ResourcesList = ({ data, DeleteResource, handleEdit ,handleNewResource,subcategoryId}: Props) => {
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-semibold mb-4">Resources List</h2>
+    <div className="p-5">
+
+      {/* Align the button to the right */}
+      <div className="flex justify-between mb-4">
+         <h2 className="text-xl font-semibold mb-4">Resources List</h2>
+        <button 
+          onClick={() => handleNewResource(subcategoryId)}
+          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
+        >
+          New Resource
+        </button>
+      </div>
 
       <table className="min-w-full border border-gray-300 bg-white rounded-lg shadow-md">
         <thead className="bg-gray-200">

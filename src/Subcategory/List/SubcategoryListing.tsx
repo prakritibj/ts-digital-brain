@@ -21,7 +21,7 @@ interface Props {
   data: { data: Category[] }; // Adjust the data structure to match the provided JSON structure
   categoryId: string;
   deletesubcategory: (id: string) => void; // Add type for deletesubcategory
-  handleEdit: (id: string) => void; 
+  handleEdit: (id: string) => void;
 }
 
 const SubcategoryList = ({ data, categoryId, deletesubcategory, handleEdit }: Props) => {
@@ -59,21 +59,21 @@ const SubcategoryList = ({ data, categoryId, deletesubcategory, handleEdit }: Pr
             <span> <Link to={`/resources/${subcategory._id}`}> {subcategory.subcategoryName} </Link>  </span>
 
             <div>
-              <button className="text-blue-900 size" onClick={()=>{handleEdit(subcategory._id)}}>
+              <button className="text-blue-900 size" onClick={() => { handleEdit(subcategory._id) }}>
                 <CiEdit />
               </button>
 
-          <button onClick={()=>{handleDelete(subcategory._id)}} className="text-red-400 ml-2">
-            <MdDeleteForever />
-          </button>
-        </div>
-      </div>
-    ))
-  ) : (
-    <p>No subcategories found for this category.</p>
-  )}
-  
-</div>
+              <button onClick={() => { handleDelete(subcategory._id) }} className="text-red-400 ml-2">
+                <MdDeleteForever />
+              </button>
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>No subcategories found for this category.</p>
+      )}
+
+    </div>
   );
 };
 

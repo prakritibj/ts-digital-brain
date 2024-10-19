@@ -3,7 +3,7 @@ import ATMTextField from "../../components/Atoms/ATMTextField/ATMTextField";
 
 import { IoIosAddCircle } from "react-icons/io";
 
-const AddSubcategoryForm = ({ formikProp}: Props) => {
+const AddSubcategoryForm = ({ formikProp }: Props) => {
   const { values, handleChange, isSubmitting } = formikProp;
 
   return (
@@ -12,12 +12,12 @@ const AddSubcategoryForm = ({ formikProp}: Props) => {
 
         {/* Subcategory input field */}
         <ATMTextField
-        label=""
-        className="border-blue-200 p-0 w-full placeholder:text-sm "
-        name="subcategoryName"
-        placeholder="Enter subcategory name"
-        value={values.subcategoryName} 
-        onChange={handleChange}
+          label=""
+          className="border-blue-200 p-0 w-full placeholder:text-sm "
+          name="subcategoryName"
+          placeholder="Enter subcategory name"
+          value={values.subcategoryName}
+          onChange={handleChange}
         />
         {/* Submit button */}
         <button

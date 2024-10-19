@@ -11,18 +11,21 @@ type Props = {
     createdAt: string;
     updatedAt: string;
     __v: number;
+    DeleteResource: null;
+
+
   }>
 };
 
-const ResourcesList = ({ data, DeleteResource, handleEdit ,handleNewResource,subcategoryId}: Props) => {
+const ResourcesList = ({ data, DeleteResource, handleEdit, handleNewResource, subcategoryId }: Props) => {
 
   return (
     <div className="p-5">
 
       {/* Align the button to the right */}
       <div className="flex justify-between mb-4">
-         <h2 className="text-xl font-semibold mb-4">Resources List</h2>
-        <button 
+        <h2 className="text-xl font-semibold mb-4">Resources List</h2>
+        <button
           onClick={() => handleNewResource(subcategoryId)}
           className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
         >
@@ -56,10 +59,10 @@ const ResourcesList = ({ data, DeleteResource, handleEdit ,handleNewResource,sub
               </td>
               <td className="p-2 border border-gray-300">{resources.description}</td>
               <td className="p-2 border border-gray-300">
-                <button onClick={()=>{handleEdit(resources._id)}} className="bg-blue-500 text-white px-4 hover:bg-blue-600px-3 py-1 mr-2 rounded hover:bg-blue-700 transition">
+                <button onClick={() => { handleEdit(resources._id) }} className="bg-blue-500 text-white px-4 hover:bg-blue-600px-3 py-1 mr-2 rounded hover:bg-blue-700 transition">
                   Edit
                 </button>
-                <button onClick={()=>{DeleteResource(resources._id)}} className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">
+                <button onClick={() => { DeleteResource(resources._id) }} className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">
                   remove
                 </button>
               </td>

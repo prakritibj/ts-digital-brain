@@ -5,11 +5,11 @@ import HomeHeader from "../../components/Header/HomeHeader"
 const HomeLayout = () => {
 
   return (
-<>
+    <>
 
-<HomeHeader/>
-<CategoryLisitingWrapper/>
-</>
+      <HomeHeader />
+      <CategoryLisitingWrapper />
+    </>
 
   )
 }

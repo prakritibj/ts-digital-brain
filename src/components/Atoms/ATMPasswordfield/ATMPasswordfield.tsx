@@ -24,7 +24,7 @@ const ATMPasswordField: React.FC<ATMPasswordFieldProps> = ({
         type="password"
         className={`${className} w-full p-2 m-2 border-gray-50 rounded-sm border-2 outline outline-1 outline-slate-400`}
         name={name}
-        value={value}     
+        value={value}
         onChange={onChange}
         placeholder={placeholder}
       />

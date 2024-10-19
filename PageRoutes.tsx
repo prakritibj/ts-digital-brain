@@ -61,14 +61,6 @@ const router = createBrowserRouter([
         path : "/subcategory-list",
          element : <SubcategoryListWrapper/>
      },
-
-
-
-     // Resources Page routes
-     {
-        path : "/Resourse-form",
-        element : <AddResourcesWrapper/>
-     },
      {
       path: "/resourceslist",
       element: <ResourcesListingWrapper/>
@@ -82,10 +74,6 @@ const router = createBrowserRouter([
       path:"/edit-resource/:id",
       element: <EditResourcesWrapper/>
     },
-   //  {
-   //    path:"/edit",
-   //    element: <div>hello </div>
-   //  },
    {
       path : "/newResourse/:id",
       element :  <AddResourcesWrapper/>

@@ -73,11 +73,13 @@ type Props = {
   subcategoryName: string; // Add subcategoryName prop
 };
 
-const AddResourcesForm = ({ formikProps ,subcategoryName}: Props ) => {
+const AddResourcesForm = ({ formikProps, subcategoryName }: Props) => {
   return (
     <div className="flex items-center justify-center min-h-screen">
-       <h2  className="text-2xl font-semibold mb-4" >{subcategoryName}</h2>
-      <form className="space-y-4 w-full max-w-md p-4 bg-white rounded shadow-md">
+      {/* <h2 className="text-2xl font-semibold mb-4" >{subcategoryName}</h2> */}
+      {/* Your form fields go here */}
+      <div className="space-y-4 w-full max-w-md p-4 bg-white rounded shadow-md">
+       {subcategoryName && <h2 className='font-bold px-3 py-4 text-slate-600 '>{subcategoryName}</h2>} 
         <div className="flex items-center border p-2 rounded-md">
           <FaPen className="mr-2" />
           <Field
@@ -118,7 +120,7 @@ const AddResourcesForm = ({ formikProps ,subcategoryName}: Props ) => {
         <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md w-full">
           Add Resource
         </button>
-      </form>
+      </div>
     </div>
   );
 };

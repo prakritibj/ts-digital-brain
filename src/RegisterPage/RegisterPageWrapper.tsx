@@ -8,8 +8,8 @@ import RegisterPage from './RegisterPage';
 import { Form, Formik } from 'formik';
 
 const RegistrationWrapper = () => {
-     const [ register] = useRegisterMutation()
-   console.log(register, "rehj")
+  const [register] = useRegisterMutation()
+  console.log(register, "rehj")
   const navigate = useNavigate();
   const initialValues = {
     name: "",
@@ -30,8 +30,8 @@ const RegistrationWrapper = () => {
   });
 
   const handleSubmit = (values, actions) => {
-   register(values)
-   console.log(values ,"vakl")
+    register(values)
+    console.log(values, "vakl")
       .then((res) => {
         actions.resetForm();
         const authToken = res.data.token;
@@ -62,7 +62,7 @@ const RegistrationWrapper = () => {
           </Form>
         )}
       </Formik>
-      <ToastContainer /> 
+      <ToastContainer />
     </>
   );
 };

@@ -1,5 +1,5 @@
 // SkeletonLoader.js
-const  Loader = () => {
+const Loader = () => {
     return (
         <div className="overflow-x-auto">
             <table className="min-w-full border-collapse border border-gray-200">
@@ -30,4 +30,4 @@ const  Loader = () => {
     );
 };
 
-export default  Loader;
+export default Loader;

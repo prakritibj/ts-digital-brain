@@ -26,8 +26,8 @@
 //     })
 //       .then((response: any) => {
 //         toast.success('Resource added successfully!');
-         
-         
+
+
 //         console.log('Success:', response);
 //       })
 //       .catch((error: any) => {
@@ -57,7 +57,7 @@
 
 import React from 'react';
 import AddResourcesForm from "../Layouts/AddResourcesForm";
-import { Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import { useAddResourcesMutation } from '../../Slices/ResourseSlice';
 import { useParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
@@ -65,13 +65,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useGetSingleSubcategoryQuery } from '../../Slices/subcategorySlice';
 
 function AddResourcesWrapper() {
-  const {id} = useParams();
-  // const id = "671224c3588c27885d0fccdb"
+  const { id } = useParams();
   console.log(id)
   const [AddResources] = useAddResourcesMutation();
-  const {data} = useGetSingleSubcategoryQuery(id)
+  const { data } = useGetSingleSubcategoryQuery(id)
   console.log(data, "dataa")
-   const subName = data?.data?.subcategoryName
+  const subName = data?.data?.subcategoryName
 
   const initialValues = {
     name: '',
@@ -81,6 +80,8 @@ function AddResourcesWrapper() {
   };
 
   const handleSubmit = (values: any) => {
+     console.log(values, "val")
+     console.log(AddResources," ADD")
     AddResources({
       name: values.name,
       description: values.description,
@@ -88,6 +89,7 @@ function AddResourcesWrapper() {
       link: values.resourceLink,
     })
       .then((response: any) => {
+        console.log(response, "res")
         toast.success('Resource added successfully!');
         console.log('Success:', response);
       })
@@ -101,10 +103,10 @@ function AddResourcesWrapper() {
     <>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {formikProps => (
-          <form onSubmit={formikProps.handleSubmit}>
+          <Form onSubmit={formikProps.handleSubmit}>
             <AddResourcesForm formikProps={formikProps}
-             subcategoryName={subName}  />
-          </form>
+              subcategoryName={subName} />
+          </Form>
         )}
       </Formik>
       <ToastContainer />

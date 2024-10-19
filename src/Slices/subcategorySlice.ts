@@ -33,24 +33,24 @@ const AuthApi = userApiSlice.injectEndpoints({
         url: 'category/getAllCategories',
         method: "GET",
       }),
-     providesTags: ["subcategory"]
+      providesTags: ["subcategory"]
     }),
     getSingleSubcategory: builder.query({
       query: (id) => ({
         url: `subcategory/getSingleSubCategory/${id}`,
         method: "GET",
       }),
-     providesTags: ["subcategory"]
+      providesTags: ["subcategory"]
     }),
   })
 });
- 
-export const { 
-useAddSubcategoryMutation,
-useEditSubcategoryMutation,
-useDeleteSubcategoryMutation,
-useGetSubcategoryQuery,
-useGetSingleSubcategoryQuery
+
+export const {
+  useAddSubcategoryMutation,
+  useEditSubcategoryMutation,
+  useDeleteSubcategoryMutation,
+  useGetSubcategoryQuery,
+  useGetSingleSubcategoryQuery
 } = AuthApi;
 
 export default AuthApi;

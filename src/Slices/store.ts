@@ -5,11 +5,11 @@ const store = configureStore({
     reducer: {
 
         [AuthApi.reducerPath]: AuthApi.reducer,
-        
-        
 
-},
-middleware: (getDefaultMiddleware) => getDefaultMiddleware()
-    .concat(AuthApi.middleware)
+
+
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+        .concat(AuthApi.middleware)
 })
 export default store;

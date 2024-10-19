@@ -20,7 +20,7 @@ const AddSubcategoryWrapper = ({ categoryId }: any) => {
     subcategoryName: string().required('Enter subcategory name'),
   });
   const handleSubmit = (values: any, { setSubmitting }: FormikHelpers<any>) => {
-   
+
     // console.log(values, "val")
     AddSubcategory(values).then((res) => {
       console.log(values, "bal")

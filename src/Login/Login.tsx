@@ -62,7 +62,7 @@ const Login: React.FC<LoginProps> = ({ formikProps }) => {
                     />
                 </div>
                 <p className="mt-8 text-center text-gray-600">Don't have an account? <Link to={'/registration'}> Create Account</Link> </p>
-                </div>
+            </div>
 
         </div>
     );

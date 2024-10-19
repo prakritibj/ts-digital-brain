@@ -12,10 +12,10 @@ const EditSubcategoryWrapper = () => {
   const [editSubcategory] = useEditSubcategoryMutation()
   const navigate = useNavigate()
   const { data } = useGetSingleSubcategoryQuery(id)
-  console.log(data,id ,"iod")
+  console.log(data, id, "iod")
 
   const initialValues = {
-    subcategoryName: data?.data?.subcategoryName||""  // Initialize with fetched data or empty string
+    subcategoryName: data?.data?.subcategoryName || ""  // Initialize with fetched data or empty string
   }
 
   const validationSchema = object({

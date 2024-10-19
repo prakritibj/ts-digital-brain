@@ -9,32 +9,32 @@ interface Props {
 
 const SubcategoryListWrapper = ({ categoryId }: Props) => {
   const { data, isLoading, error } = useGetSubcategoryQuery(categoryId);
-  console.log(data,"DATA")
+  console.log(data, "DATA")
   const [deleteSubcategory] = useDeleteSubcategoryMutation()
   const navigate = useNavigate()
 
   if (isLoading) {
-    return <DotSpinner/>
+    return <DotSpinner />
   }
 
   if (error) {
     return <p>Error loading subcategories: {error.message}</p>; // Show error message
   }
 
-const handleDeleteSubcateory = (_id: string) => {
-  deleteSubcategory(_id).then((res)=>{
-    console.log(res)
-  }).catch(err =>{
-    console.error("Error deleting category:", err)
+  const handleDeleteSubcateory = (_id: string) => {
+    deleteSubcategory(_id).then((res) => {
+      console.log(res)
+    }).catch(err => {
+      console.error("Error deleting category:", err)
     })
-}
-const handleEdit = (_id : string) => {
- navigate(`/edit-subcategory/${_id}`)
-}
+  }
+  const handleEdit = (_id: string) => {
+    navigate(`/edit-subcategory/${_id}`)
+  }
 
   return (
     <>
-      {data ? <SubcategoryList data={data} categoryId={categoryId} handleEdit ={handleEdit} deletesubcategory ={handleDeleteSubcateory} /> : <p>No subcategories available</p>}
+      {data ? <SubcategoryList data={data} categoryId={categoryId} handleEdit={handleEdit} deletesubcategory={handleDeleteSubcateory} /> : <p>No subcategories available</p>}
     </>
   );
 };

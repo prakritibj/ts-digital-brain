@@ -3,7 +3,7 @@ import Login from './Login';
 import { Form, Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import { toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useLoginMutation } from '../Slices/AuthSlice';
 
@@ -24,16 +24,16 @@ const initialValues: LoginValues = {
 
 const LoginWrapper: React.FC = () => {
   const navigate = useNavigate()
- const [login] = useLoginMutation()
+  const [login] = useLoginMutation()
   // console.log(login, 'kkkkk')
   const handleSubmit = (values: LoginValues, { setSubmitting }: FormikHelpers<LoginValues>) => {
-   
+
     login(values).then((res: any) => {
       console.log(values, " value")
       console.log(res, "res")
       if (res?.data.status) {
         toast.success(res.data.msg)
-        localStorage.setItem("authToken",res.data.data.token)
+        localStorage.setItem("authToken", res.data.data.token)
         navigate("/home")
       } else {
         toast.error(res.data.msg)
@@ -44,9 +44,9 @@ const LoginWrapper: React.FC = () => {
         console.log(error)
       })
     console.log(values);
-   setTimeout(()=>{
-    setSubmitting(false);
-   },2000)
+    setTimeout(() => {
+      setSubmitting(false);
+    }, 2000)
   };
   return (
     <Formik

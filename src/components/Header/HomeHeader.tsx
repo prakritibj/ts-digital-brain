@@ -9,7 +9,7 @@ const HomeHeader = () => {
           <p className=" font-bold text-lg text-white">Life isn’t about finding yourself. It’s about creating yourself</p>
           <div className="flex ">
             <Link to={"/addcategory"}>
-            <button className="text-white font-bold bg-cyan-600 rounded-md p-2"> Add category</button>
+              <button className="text-white font-bold bg-cyan-600 rounded-md p-2"> Add category</button>
             </Link>
           </div>
         </div>

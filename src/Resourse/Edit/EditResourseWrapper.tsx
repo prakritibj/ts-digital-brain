@@ -2,27 +2,27 @@ import React from 'react';
 import AddResourcesForm from '../Layouts/AddResourcesForm';
 import { Formik, FormikHelpers } from 'formik';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEditResourcesMutation,useGetSingleResourcesQuery} from '../../Slices/ResourseSlice';
+import { useEditResourcesMutation, useGetSingleResourcesQuery } from '../../Slices/ResourseSlice';
 
 
 
 function EditResourcesWrapper() {
-  const {id} = useParams()
-  const[EditResources] =  useEditResourcesMutation()
-  const {data} = useGetSingleResourcesQuery(id)
+  const { id } = useParams()
+  const [EditResources] = useEditResourcesMutation()
+  const { data } = useGetSingleResourcesQuery(id)
   const navigate = useNavigate()
-  
+
   const initialValues = {
-    name: data?.data.name || "",
-    resourceLink: data?.data.link || "",
-    description: data?.data.description || "",
-    
+    name: data?.data?.name || "",
+    resourceLink: data?.data?.link || "",
+    description: data?.data?.description || "",
+
   };
 
-  const handleSubmit = (values: any, {setSubmitting}: FormikHelpers<any>) => {
+  const handleSubmit = (values: any, { setSubmitting }: FormikHelpers<any>) => {
     EditResources({ data: values, id })
       .then((response: any) => {
-        if(response){
+        if (response) {
           navigate("/home")
         }
         console.log('Success:', response);
@@ -35,9 +35,9 @@ function EditResourcesWrapper() {
 
   return (
     <Formik initialValues={initialValues}
-     onSubmit={handleSubmit}
-     enableReinitialize={true}
-     >
+      onSubmit={handleSubmit}
+      enableReinitialize={true}
+    >
       {formikProps => (
         <form onSubmit={formikProps.handleSubmit}>
           <AddResourcesForm buttonName={"Edit resource"} heading={"Edit resource"} formikProps={formikProps} />
